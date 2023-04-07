@@ -17,7 +17,7 @@ public class Page1 extends JPanel implements VisualComponent{
 	
 	JLabel lbTitle, lbName, lbAge, lbFunction;
 	JTextField jtfName, jtfAge, jtfFunction;
-	JButton btName;
+	JButton btRegister;
     RegisterManager registerM;
 	
 	public Page1() {
@@ -28,6 +28,7 @@ public class Page1 extends JPanel implements VisualComponent{
 	
 	
 	public void setLayouts() {
+		
 		setLayout(null);
 		setBackground(Color.GREEN);
 		setSize(800, 600);
@@ -38,27 +39,27 @@ public class Page1 extends JPanel implements VisualComponent{
 	public void setComponents() {
 		lbTitle = new JLabel("Cadastro de Empregados");
 		//setbounds(horizontal, vertical, comprimento, altura)
-		lbTitle.setBounds(300, 10, 300, 50);
+		lbTitle.setBounds(300, 10, 300, 30);
 		
 		lbName = new JLabel("Nome");
-		lbName.setBounds(80, 80, 80, 40);
+		lbName.setBounds(80, 80, 80, 30);
 		jtfName = new JTextField();
-		jtfName.setBounds(170, 80, 300, 40);
+		jtfName.setBounds(140, 80, 300, 30);
 		
 		
 		lbAge = new JLabel("Idade");
-		lbAge.setBounds(510, 80, 60, 40);
+		lbAge.setBounds(470, 80, 60, 30);
 		jtfAge = new JTextField();
-		jtfAge.setBounds(590, 80, 80, 40);
+		jtfAge.setBounds(520, 80, 80, 30);
 		
 		
 		lbFunction = new JLabel("Funcão");
-		lbFunction.setBounds(80, 150, 80, 40);
+		lbFunction.setBounds(80, 150, 80, 30);
 		jtfFunction = new JTextField();
-		jtfFunction.setBounds(140, 150, 180, 40);
+		jtfFunction.setBounds(140, 150, 180, 30);
 		
-		btName = new JButton("-- CADASTRAR --");
-	   // btName.setBounds(400, 10, 100, 50);
+		btRegister = new JButton("-- Gravar --");
+	    btRegister.setBounds(300, 200, 110, 30);
 	    // adicionando os componentes no Jpanel (Page1)
 		add(lbTitle);
 		add(lbName);
@@ -67,13 +68,14 @@ public class Page1 extends JPanel implements VisualComponent{
 		add(jtfAge);
 	    add(lbFunction);
 	    add(jtfFunction);
+	    add(btRegister);
 	    
 	    registerM = new RegisterManager();
 	    
 	}
 
 	public void setEvents() {
-		btName.addActionListener(new ActionListener() {
+		btRegister.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				Employee employee = registerM.getNewEmployee();
