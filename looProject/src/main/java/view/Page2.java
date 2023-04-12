@@ -1,8 +1,11 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class Page2 extends JPanel implements VisualComponent{
 
@@ -14,7 +17,7 @@ public class Page2 extends JPanel implements VisualComponent{
 	
 	
 	public void setLayouts() {
-		setLayout(null);
+		setLayout(new BorderLayout());
 		setBackground(Color.BLUE);
 		setSize(800, 600);
 		setVisible(true);
@@ -22,7 +25,12 @@ public class Page2 extends JPanel implements VisualComponent{
 	}
 
 	public void setComponents() {
-		// TODO Auto-generated method stub
+		 // Create a table with 10 rows and 5 columns
+	    JTable table = new JTable(10, 5);
+
+	    // Make the table vertically scrollable
+	    JScrollPane scrollPane = new JScrollPane(table);
+	    add(scrollPane, BorderLayout.CENTER);
 		
 	}
 

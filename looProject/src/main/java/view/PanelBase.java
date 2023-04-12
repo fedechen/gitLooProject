@@ -3,13 +3,16 @@ package view;
 import java.awt.CardLayout;
 import java.awt.Color;
 
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 public class PanelBase extends JPanel implements VisualComponent{
 
 	
 	private Page1 page1;
-	private Page2 page2;	
+	private Page2 page2;
+
+	
 	
 	public PanelBase() {
 		setLayouts();
@@ -25,10 +28,15 @@ public class PanelBase extends JPanel implements VisualComponent{
 		setLayout(new CardLayout());
 		
 	}
-
+	
 	public void setComponents() {
 		page1 = new Page1();
-		add(page1, "1");
+		page2 = new Page2();
+		
+		
+		
+		
+		//add(page1, "1");
 		add(page2, "2");
 		
 	}

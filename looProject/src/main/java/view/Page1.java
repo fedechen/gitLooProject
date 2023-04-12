@@ -17,7 +17,7 @@ public class Page1 extends JPanel implements VisualComponent{
 	
 	JLabel lbTitle, lbName, lbAge, lbFunction;
 	JTextField jtfName, jtfAge, jtfFunction;
-	JButton btRegister;
+	JButton btRegister, btList;
     RegisterManager registerM;
 	
 	public Page1() {
@@ -60,6 +60,10 @@ public class Page1 extends JPanel implements VisualComponent{
 		
 		btRegister = new JButton("-- Gravar --");
 	    btRegister.setBounds(300, 200, 110, 30);
+	    
+	    btList = new JButton("-- Listar --");
+	    btList.setBounds(420, 200, 110, 30);
+	    
 	    // adicionando os componentes no Jpanel (Page1)
 		add(lbTitle);
 		add(lbName);
@@ -69,6 +73,7 @@ public class Page1 extends JPanel implements VisualComponent{
 	    add(lbFunction);
 	    add(jtfFunction);
 	    add(btRegister);
+	    add(btList);
 	    
 	    registerM = new RegisterManager();
 	    
