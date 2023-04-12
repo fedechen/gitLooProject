@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBoxMenuItem;
@@ -8,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 
 public class FrameBase extends JFrame implements VisualComponent{
@@ -16,6 +18,7 @@ public class FrameBase extends JFrame implements VisualComponent{
 	private JMenuBar menubar;
 	private JMenu menuAction;
 	private JMenuItem itemGravar;
+	private CardLayout cl;
 	
 	
 	public FrameBase() {
@@ -23,6 +26,10 @@ public class FrameBase extends JFrame implements VisualComponent{
 		setComponents();
 		setEvents();
 	    validate();
+	}
+	
+	public JPanel getBase() {
+		return this.base;
 	}
 	
 	
@@ -35,7 +42,8 @@ public class FrameBase extends JFrame implements VisualComponent{
 	}
 
 	public void setComponents() {
-	    base = new PanelBase();
+	    base = new PanelBase(this);
+	    cl = (CardLayout) base.getLayout();
 		add(base, BorderLayout.CENTER);
 		
 		 // Cria uma barra de menu para o JFrame
@@ -66,13 +74,22 @@ public class FrameBase extends JFrame implements VisualComponent{
 	}
 
 	public void setEvents() {
-		
-
-      
-
-       
+		   
    
 		
+	}
+	
+	public void showPanels(int panelBaseConstants) {
+		switch (panelBaseConstants) {
+		case 1:
+			cl.show(base, "register");
+			break;
+		case 2:
+			cl.show(base, "list");
+			break;
+		default:
+			break;
+		}
 	}
 
      

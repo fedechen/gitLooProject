@@ -11,10 +11,11 @@ public class PanelBase extends JPanel implements VisualComponent{
 	
 	private Page1 page1;
 	private Page2 page2;
-
+    private FrameBase frame;
+    	
 	
-	
-	public PanelBase() {
+	public PanelBase(FrameBase frame) {
+		this.frame = frame;
 		setLayouts();
 		setComponents();
 		setEvents();
@@ -30,14 +31,14 @@ public class PanelBase extends JPanel implements VisualComponent{
 	}
 	
 	public void setComponents() {
-		page1 = new Page1();
+		page1 = new Page1(frame);
 		page2 = new Page2();
 		
 		
 		
 		
-		//add(page1, "1");
-		add(page2, "2");
+		add(page1, "register");
+		add(page2, "list");
 		
 	}
 

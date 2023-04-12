@@ -15,12 +15,14 @@ import model.Employee;
 public class Page1 extends JPanel implements VisualComponent{
 
 	
-	JLabel lbTitle, lbName, lbAge, lbFunction;
-	JTextField jtfName, jtfAge, jtfFunction;
-	JButton btRegister, btList;
-    RegisterManager registerM;
+	private JLabel lbTitle, lbName, lbAge, lbFunction;
+	private JTextField jtfName, jtfAge, jtfRole;
+	private JButton btRegister, btList;
+    private RegisterManager registerM;
+    private FrameBase frame;
 	
-	public Page1() {
+	public Page1(FrameBase frame) {
+		this.frame = frame;
 		setLayouts();
 		setComponents();
 		setEvents();
@@ -55,8 +57,8 @@ public class Page1 extends JPanel implements VisualComponent{
 		
 		lbFunction = new JLabel("Funcão");
 		lbFunction.setBounds(80, 150, 80, 30);
-		jtfFunction = new JTextField();
-		jtfFunction.setBounds(140, 150, 180, 30);
+		jtfRole = new JTextField();
+		jtfRole.setBounds(140, 150, 180, 30);
 		
 		btRegister = new JButton("-- Gravar --");
 	    btRegister.setBounds(300, 200, 110, 30);
@@ -71,7 +73,7 @@ public class Page1 extends JPanel implements VisualComponent{
 		add(lbAge);
 		add(jtfAge);
 	    add(lbFunction);
-	    add(jtfFunction);
+	    add(jtfRole);
 	    add(btRegister);
 	    add(btList);
 	    
@@ -85,7 +87,18 @@ public class Page1 extends JPanel implements VisualComponent{
 			public void actionPerformed(ActionEvent e) {
 				Employee employee = registerM.getNewEmployee();
 				employee.setName(jtfName.getText());
+				employee.setAge(Integer.parseInt(jtfAge.getText()));
+				employee.setRole(jtfRole.getText());
 				registerM.saveEmployee(employee);
+			}
+		});
+		
+		btList.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.showPanels(2);
+			   
 			}
 		});
 		

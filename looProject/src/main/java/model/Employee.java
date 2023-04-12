@@ -13,6 +13,22 @@ public class Employee {
 	private long id;
 	
 	private String name;
+	private int age;
+	private String role;
+	
+	
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public long getId() {
 		return id;
 	}
