@@ -18,7 +18,6 @@ public class Page1 extends JPanel implements VisualComponent{
 	private JLabel lbTitle, lbName, lbAge, lbFunction;
 	private JTextField jtfName, jtfAge, jtfRole;
 	private JButton btRegister, btList;
-    private RegisterManager registerM;
     private FrameBase frame;
 	
 	public Page1(FrameBase frame) {
@@ -77,7 +76,7 @@ public class Page1 extends JPanel implements VisualComponent{
 	    add(btRegister);
 	    add(btList);
 	    
-	    registerM = new RegisterManager();
+	    
 	    
 	}
 
@@ -85,11 +84,11 @@ public class Page1 extends JPanel implements VisualComponent{
 		btRegister.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				Employee employee = registerM.getNewEmployee();
+				Employee employee = frame.manager.getNewEmployee();
 				employee.setName(jtfName.getText());
 				employee.setAge(Integer.parseInt(jtfAge.getText()));
 				employee.setRole(jtfRole.getText());
-				registerM.saveEmployee(employee);
+				frame.manager.saveEmployee(employee);
 			}
 		});
 		

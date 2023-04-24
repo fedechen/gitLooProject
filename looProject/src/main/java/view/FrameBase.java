@@ -12,6 +12,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 
+import control.RegisterManager;
+
 public class FrameBase extends JFrame implements VisualComponent{
 
 	private PanelBase base; 
@@ -19,6 +21,7 @@ public class FrameBase extends JFrame implements VisualComponent{
 	private JMenu menuAction;
 	private JMenuItem itemGravar;
 	private CardLayout cl;
+	public RegisterManager manager;
 	
 	
 	public FrameBase() {
@@ -70,7 +73,7 @@ public class FrameBase extends JFrame implements VisualComponent{
         fileMenu.addSeparator();
         editMenu.add(clearAction);
         
-		
+		manager = new RegisterManager();
 	}
 
 	public void setEvents() {
