@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -113,7 +115,19 @@ public class Page2 extends JPanel implements VisualComponent {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				addClient();
+				//recuperando employees do banco
+				List<Employee> allEmployees = frame.manager.getListEmployees();
+				for (Iterator iterator = allEmployees.iterator(); iterator.hasNext();) {
+					Employee c = (Employee) iterator.next();
+					Vector<Object> newClient = new Vector<>();
+					newClient.add(c.getId());
+					newClient.add(c.getName());
+					newClient.add(c.getAge());
+					clients.add(newClient);
+				}
+				
+				dtm.fireTableDataChanged();
+				
 
 			}
 		});
@@ -136,10 +150,12 @@ public class Page2 extends JPanel implements VisualComponent {
 
 	private void addClient() {
 
+		
+		// criando um empregado novo, pegando o nome no textfield de Page2 e colocando idade aleatória
 		Employee c = frame.manager.getNewEmployee();
 		c.setName(tfName.getText());
 		c.setAge(12);
-		c.setId(344332);
+		//c.setId(344332);
 		
 		
 		//verifica se o register conseguiu armazenar o cliente no banco
@@ -154,11 +170,15 @@ public class Page2 extends JPanel implements VisualComponent {
 		
 
 	}
+	
+
 
 	private void removeClient() {
        int row = table.getSelectedRow();
+      // clients.remove(row);
        System.out.println("linha selecionada "+row);
-       
+       dtm.removeRow(row);
+       dtm.fireTableDataChanged();
        
        
        
